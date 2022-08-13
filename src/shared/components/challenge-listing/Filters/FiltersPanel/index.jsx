@@ -46,6 +46,13 @@ import style from './style.scss';
 
 const Filter = challengeUtils.filter;
 
+function placeArrow(TooltipNode) {
+  const rootLeftPos = parseInt(TooltipNode.style.left, 10);
+  const arrow = TooltipNode.querySelector('.rc-tooltip-arrow');
+  const rootLeftOffset = this.getRootDomNode().getBoundingClientRect().left;
+  arrow.style.left = `${rootLeftOffset - rootLeftPos + 6}px`;
+}
+
 export default function FiltersPanel({
   communityFilters,
   defaultCommunityId,
@@ -233,7 +240,9 @@ export default function FiltersPanel({
     }));
 
   // const mapOps = item => ({ label: item, value: item });
-  const mapTypes = item => ({ label: item.name, value: item.abbreviation });
+  const mapTypes = item => ({
+    label: item.name, value: item.abbreviation, description: item.description,
+  });
   const getCommunityOption = () => {
     if (filterState.events && filterState.events.length) {
       return `event_${filterState.events[0]}`;
@@ -298,10 +307,11 @@ export default function FiltersPanel({
           Des: true,
           DS: true,
           QA: true,
+          CMP: true,
         },
         search: '',
         tags: [],
-        types: ['CH', 'F2F', 'TSK'],
+        types: ['CH', 'F2F', 'TSK', 'MAR', 'RDM', 'SKL', 'SRM'],
         groups: [],
         events: [],
         endDateStart: null,
@@ -318,6 +328,17 @@ export default function FiltersPanel({
     setRecommendedToggle(on);
   };
 
+  const categoryCMPTip = (
+    <div styleName="tctooltiptext">
+      <p styleName="header">
+        Competitive Programming
+      </p>
+      <p styleName="body">
+        Raw talent and a creative aptitude are the tools needed to compete in coding
+      </p>
+    </div>
+  );
+
   const recommendedCheckboxTip = (
     <div styleName="tctooltiptext">
       <p>Show the best challenges for you.</p>
@@ -328,6 +349,17 @@ export default function FiltersPanel({
     <div styleName="tctooltiptext">
       <p>Earn TCO points by participating in these <br />
         challenges. <a href={config.URL.TCO_OPEN_URL} target="_blank" rel="noreferrer noopener">Learn more about TCO</a>
+      </p>
+    </div>
+  );
+
+  const typeTip = (title, description) => (
+    <div styleName="tctooltiptext">
+      <p styleName="header">
+        {title}
+      </p>
+      <p styleName="body">
+        {description}
       </p>
     </div>
   );
@@ -421,6 +453,23 @@ export default function FiltersPanel({
                   onSwitch={on => switchTrack('QA', on)}
                 />
               </span>
+              <span styleName="filter-switch-with-label" aria-label={`QA toggle button pressed ${isTrackOn('CMP') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('CMP')}>
+                <SwitchWithLabel
+                  enabled={isTrackOn('CMP')}
+                  labelAfter="Competitive Programming"
+                  onSwitch={on => switchTrack('CMP', on)}
+                />
+                <div styleName="category-cmp-tooltip">
+                  <Tooltip
+                    id="cmp-tip"
+                    content={categoryCMPTip}
+                    className={style['tooltip-overlay']}
+                    trigger={['hover', 'focus']}
+                  >
+                    <CircleIcon />
+                  </Tooltip>
+                </div>
+              </span>
             </div>
           </div>
         </div>
@@ -453,6 +502,18 @@ export default function FiltersPanel({
                               setFilterState({ ..._.clone(filterState), types });
                             }}
                           />
+                          <div styleName="type-tooltip">
+                            <Tooltip
+                              id={`${option.value}-tip`}
+                              content={typeTip(option.label, option.description)}
+                              className={style['tooltip-overlay']}
+                              trigger={['hover', 'focus']}
+                              placeArrow={placeArrow}
+                              position="top"
+                            >
+                              <CircleIcon />
+                            </Tooltip>
+                          </div>
                         </span>
                       ))
                   }
@@ -719,11 +780,12 @@ export default function FiltersPanel({
                 Des: true,
                 DS: true,
                 QA: true,
+                CMP: true,
               },
               search: '',
               tco: false,
               tags: [],
-              types: ['CH', 'F2F', 'TSK'],
+              types: ['CH', 'F2F', 'TSK', 'MAR', 'RDM', 'SKL', 'SRM'],
               groups: [],
               events: [],
               endDateStart: null,

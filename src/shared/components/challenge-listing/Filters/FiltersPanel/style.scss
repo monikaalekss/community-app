@@ -297,6 +297,17 @@ hr.hr {
               }
             }
           }
+
+          .category-cmp-tooltip {
+            height: 100%;
+            padding-left: 5px;
+            position: relative;
+            top: -2px;
+
+            div {
+              width: unset;
+            }
+          }
         }
 
         @include xs-to-md {
@@ -418,7 +429,8 @@ hr.hr {
 
         .checkbox {
           position: relative;
-          display: inline-block;
+          display: flex;
+          flex-direction: row;
           line-height: 30px;
           min-width: calc(50% - 10px);
           margin-bottom: 8px;
@@ -491,6 +503,17 @@ hr.hr {
                 height: 12px;
                 border-radius: 50%;
               }
+            }
+          }
+
+          .type-tooltip {
+            height: 100%;
+            padding-left: 5px;
+            position: relative;
+            top: -2px;
+
+            div {
+              width: unset;
             }
           }
         }
@@ -631,6 +654,7 @@ hr.hr {
 }
 
 .tctooltiptext {
+  max-width: 292px;
   background: $tc-black;
   color: $tc-white;
   border-radius: 8px;
@@ -639,19 +663,18 @@ hr.hr {
   a {
     font-weight: bold;
   }
-}
 
-.tctooltiptext::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  bottom: 4px;
-  margin-left: -5px;
-  border-width: 5px 5px 0;
-  left: 50%;
-  border-top-color: $tc-black;
-  z-index: 1000;
+  .header {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 5px;
+  }
+
+  .body {
+    font-weight: 400;
+    color: $tc-white;
+    font-size: 14px;
+    line-height: 22px;
+  }
 }
