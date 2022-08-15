@@ -79,7 +79,7 @@ exports[`Matches shallow shapshot 2`] = `
         <span
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__label___3W9TU"
         >
-          Challenge Category
+          Categories
         </span>
         <div
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__switches___10Wrx"
@@ -141,7 +141,7 @@ exports[`Matches shallow shapshot 2`] = `
               composeAdhocTheme="deeply"
               composeContextTheme="softly"
               enabled={false}
-              labelAfter="QA"
+              labelAfter="QA & Testing"
               labelBefore=""
               mapThemrProps={[Function]}
               onSwitch={[Function]}
@@ -220,7 +220,7 @@ exports[`Matches shallow shapshot 2`] = `
         <span
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__label___3W9TU"
         >
-          Challenge Type
+          Types
         </span>
         <div
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__checkboxes___3ukXp"
