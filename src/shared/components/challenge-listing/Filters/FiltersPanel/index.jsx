@@ -243,6 +243,28 @@ export default function FiltersPanel({
   const mapTypes = item => ({
     label: item.name, value: item.abbreviation, description: item.description,
   });
+  const sortMap = {
+    CH: 1,
+    F2F: 2,
+    TSK: 3,
+    SKL: 4,
+    MM: 5,
+    SRM: 6,
+    RDM: 7,
+    CMP: 8,
+  };
+  const customSort = (a, b) => {
+    const left = _.get(a, 'value');
+    const right = _.get(b, 'value');
+    if (sortMap[left] < sortMap[right]) {
+      return -1;
+    }
+    if (sortMap[left] > sortMap[right]) {
+      return 1;
+    }
+    return 0;
+  };
+
   const getCommunityOption = () => {
     if (filterState.events && filterState.events.length) {
       return `event_${filterState.events[0]}`;
@@ -422,7 +444,7 @@ export default function FiltersPanel({
         <div styleName="filter-row">
           <div styleName="filter track">
             <span styleName="label">
-              Challenge Category
+              Categories
             </span>
             <div styleName="switches">
               <span styleName="filter-switch-with-label" aria-label={`Design toggle button pressed ${isTrackOn('Des') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('Des')}>
@@ -449,7 +471,7 @@ export default function FiltersPanel({
               <span styleName="filter-switch-with-label" aria-label={`QA toggle button pressed ${isTrackOn('QA') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('QA')}>
                 <SwitchWithLabel
                   enabled={isTrackOn('QA')}
-                  labelAfter="QA"
+                  labelAfter="QA & Testing"
                   onSwitch={on => switchTrack('QA', on)}
                 />
               </span>
@@ -479,12 +501,13 @@ export default function FiltersPanel({
             <div styleName="filter-row">
               <div styleName="filter challenge-type">
                 <span styleName="label">
-                  Challenge Type
+                  Types
                 </span>
                 <div styleName="checkboxes">
                   {
                     validTypes
                       .map(mapTypes)
+                      .sort(customSort)
                       .map(option => (
                         <span styleName="checkbox" key={option.value}>
                           <SwitchWithLabel

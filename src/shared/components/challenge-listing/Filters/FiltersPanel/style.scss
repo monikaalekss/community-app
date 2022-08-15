@@ -433,7 +433,7 @@ hr.hr {
           flex-direction: row;
           line-height: 30px;
           min-width: calc(50% - 10px);
-          margin-bottom: 8px;
+          margin-bottom: 18px;
 
           @include xs-to-md {
             min-width: 35% !important;
