@@ -132,8 +132,8 @@ export default function Bucket({
   const SRMComment = (
     <div styleName="srm-comment-container">
       <div styleName="srm-comment">
-        Looking for SRM Competitions? We are working on bringing SRMs to&nbsp;
-        the platform. Until then,&nbsp;
+        Looking for SRM Competitions? We are working on bringing SRMs to the platform.
+        Until then,&nbsp;
         <a href="https://www.topcoder.com/community/arena">please check here.</a>
       </div>
     </div>

@@ -247,7 +247,8 @@ hr.hr {
       .switches {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start !important;
+        column-gap: 10px;
 
         .filter-switch-with-label {
           width: 45%;
@@ -425,7 +426,8 @@ hr.hr {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start !important;
+        column-gap: 10px;
 
         .checkbox {
           position: relative;
@@ -654,8 +656,9 @@ hr.hr {
 }
 
 .tctooltiptext {
-  max-width: 292px;
   background: $tc-black;
+  min-width: 210px;
+  max-width: 300px;
   color: $tc-white;
   border-radius: 8px;
   padding: 10px;
@@ -676,5 +679,9 @@ hr.hr {
     color: $tc-white;
     font-size: 14px;
     line-height: 22px;
+    margin-top: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: fit-content;
   }
 }
