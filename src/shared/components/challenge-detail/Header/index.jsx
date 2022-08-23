@@ -293,7 +293,7 @@ export default function ChallengeHeader(props) {
                             document.getElementById('recommendedActiveChallenges').scrollIntoView();
                           }}
                 >
-                  Recommended Challenges
+                  Recommended Competitions
                 </div>
                 )}
 

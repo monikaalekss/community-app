@@ -284,7 +284,7 @@ exports[`Matches shallow shapshot 2`] = `
             composeAdhocTheme="deeply"
             composeContextTheme="softly"
             enabled={false}
-            labelAfter="Only Show TCO Eligible Challenges"
+            labelAfter="Only Show TCO Eligible Competitions"
             labelBefore=""
             mapThemrProps={[Function]}
             onSwitch={[Function]}
@@ -304,7 +304,7 @@ exports[`Matches shallow shapshot 2`] = `
                 <p>
                   Earn TCO points by participating in these 
                   <br />
-                  challenges. 
+                  competitions. 
                   <a
                     href="https://www.topcoder-dev.com/community/member-programs/topcoder-open"
                     rel="noreferrer noopener"

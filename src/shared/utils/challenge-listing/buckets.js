@@ -27,7 +27,7 @@ export const BUCKET_DATA = {
     //   status: ['Active'],
     // },
     // hideCount: false,
-    name: 'All Challenges',
+    name: 'All Competitions',
     sorts: [
       SORTS.MOST_RECENT_START_DATE,
       SORTS.TITLE_A_TO_Z,
@@ -39,7 +39,7 @@ export const BUCKET_DATA = {
     //   // users: [userHandle],
     // },
     // hideCount: false,
-    name: 'My Challenges',
+    name: 'My Competitions',
     sorts: [
       SORTS.MOST_RECENT_START_DATE,
       // SORTS.TIME_TO_SUBMIT,
@@ -125,14 +125,14 @@ export const BUCKET_DATA = {
   //   ],
   // },
   [BUCKETS.ALL_PAST]: {
-    name: 'All Past Challenges',
+    name: 'All Past Competitions',
     sorts: [
       SORTS.MOST_RECENT_START_DATE,
       SORTS.TITLE_A_TO_Z,
     ],
   },
   [BUCKETS.MY_PAST]: {
-    name: 'My Past Challenges',
+    name: 'My Past Competitions',
     sorts: [
       SORTS.MOST_RECENT_START_DATE,
       SORTS.TITLE_A_TO_Z,
