@@ -320,14 +320,14 @@ export default function FiltersPanel({
 
   const recommendedCheckboxTip = (
     <div styleName="tctooltiptext">
-      <p>Show the best challenges for you.</p>
+      <p>Show the best competitions for you.</p>
     </div>
   );
 
   const tcoCheckboxTip = (
     <div styleName="tctooltiptext">
       <p>Earn TCO points by participating in these <br />
-        challenges. <a href={config.URL.TCO_OPEN_URL} target="_blank" rel="noreferrer noopener">Learn more about TCO</a>
+        competitions. <a href={config.URL.TCO_OPEN_URL} target="_blank" rel="noreferrer noopener">Learn more about TCO</a>
       </p>
     </div>
   );
@@ -641,13 +641,13 @@ export default function FiltersPanel({
               <div styleName="filter-row recommended-challenges-filter">
                 <span
                   styleName="recommended-select-label"
-                  aria-label={`Recommended challenge toggle button pressed ${recommendedToggle ? 'On' : 'Off'}`}
+                  aria-label={`Recommended competition toggle button pressed ${recommendedToggle ? 'On' : 'Off'}`}
                   role="switch"
                   aria-checked={recommendedToggle}
                 >
                   <SwitchWithLabel
                     enabled={recommendedToggle}
-                    labelAfter="Recommended Challenges"
+                    labelAfter="Recommended Competitions"
                     onSwitch={onSwitchRecommendedChallenge}
                   />
                 </span>
@@ -679,7 +679,7 @@ export default function FiltersPanel({
                 >
                   <SwitchWithLabel
                     enabled={tcoToggle}
-                    labelAfter="Only Show TCO Eligible Challenges"
+                    labelAfter="Only Show TCO Eligible Competitions"
                     onSwitch={onSwitchTcoChallenge}
                   />
                 </span>
