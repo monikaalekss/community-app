@@ -54,23 +54,22 @@
     &:not(.active):hover {
       background-color: #bae1f9;
     }
-  }
 
-  .active {
-    color: #555 !important;
-    font-weight: 700;
+    &.active {
+      font-weight: 700;
 
-    &::after {
-      content: "";
-      background-image: url(assets/images/nav-active-item.svg);
-      height: 10px;
-      width: 40px;
-      margin-top: 10px;
-      justify-content: center;
-      z-index: 100;
-      display: block;
-      position: absolute;
-      top: 145px;
+      &::after {
+        content: "";
+        background-image: url(assets/images/nav-active-item.svg);
+        height: 10px;
+        width: 40px;
+        margin-top: 10px;
+        justify-content: center;
+        z-index: 100;
+        display: block;
+        position: absolute;
+        top: 145px;
+      }
     }
   }
 }

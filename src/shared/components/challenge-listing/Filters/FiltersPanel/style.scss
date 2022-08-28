@@ -251,7 +251,7 @@ hr.hr {
         column-gap: 10px;
 
         .filter-switch-with-label {
-          width: 45%;
+          min-width: calc(50% - 10px);
           margin-bottom: 16px;
           display: flex;
           white-space: nowrap;
@@ -436,10 +436,6 @@ hr.hr {
           line-height: 30px;
           min-width: calc(50% - 10px);
           margin-bottom: 18px;
-
-          @include xs-to-md {
-            min-width: 35% !important;
-          }
 
           &:not(:last-child) {
             padding-right: 10px;
@@ -680,8 +676,37 @@ hr.hr {
     font-size: 14px;
     line-height: 22px;
     margin-top: 5px;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    max-width: fit-content;
+
+    &.CH {
+      width: 255px;
+    }
+
+    &.F2F {
+      width: 275px;
+    }
+
+    &.TSK {
+      width: 270px;
+    }
+
+    &.MM {
+      width: 275px;
+    }
+
+    &.RDM {
+      width: 280px;
+    }
+
+    &.SKL {
+      width: 255px;
+    }
+
+    &.SRM {
+      width: 245px;
+    }
+
+    &.CMP {
+      width: 258px;
+    }
   }
 }

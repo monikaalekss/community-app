@@ -38,6 +38,7 @@ import { challenge as challengeUtils } from 'topcoder-react-lib';
 import { createStaticRanges } from 'utils/challenge-listing/date-range';
 import ArrowIcon from 'assets/images/ico-arrow-down.svg';
 import CircleIcon from 'assets/images/icon-circle.svg';
+import cn from 'classnames';
 import Button from '../Button';
 import UiSimpleRemove from '../../Icons/ui-simple-remove.svg';
 import BucketSelector from '../../Sidebar/BucketSelector';
@@ -355,7 +356,7 @@ export default function FiltersPanel({
       <p styleName="header">
         Competitive Programming
       </p>
-      <p styleName="body">
+      <p styleName="body CMP">
         Raw talent and a creative aptitude are the tools needed to compete in coding
       </p>
     </div>
@@ -375,12 +376,12 @@ export default function FiltersPanel({
     </div>
   );
 
-  const typeTip = (title, description) => (
+  const typeTip = (type, title, description) => (
     <div styleName="tctooltiptext">
       <p styleName="header">
         {title}
       </p>
-      <p styleName="body">
+      <p styleName={cn('body', type)}>
         {description}
       </p>
     </div>
@@ -528,7 +529,7 @@ export default function FiltersPanel({
                           <div styleName="type-tooltip">
                             <Tooltip
                               id={`${option.value}-tip`}
-                              content={typeTip(option.label, option.description)}
+                              content={typeTip(option.value, option.label, option.description)}
                               className={style['tooltip-overlay']}
                               trigger={['hover', 'focus']}
                               placeArrow={placeArrow}
