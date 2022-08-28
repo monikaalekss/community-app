@@ -38,6 +38,7 @@ import { challenge as challengeUtils } from 'topcoder-react-lib';
 import { createStaticRanges } from 'utils/challenge-listing/date-range';
 import ArrowIcon from 'assets/images/ico-arrow-down.svg';
 import CircleIcon from 'assets/images/icon-circle.svg';
+import cn from 'classnames';
 import Button from '../Button';
 import UiSimpleRemove from '../../Icons/ui-simple-remove.svg';
 import BucketSelector from '../../Sidebar/BucketSelector';
@@ -45,6 +46,13 @@ import CheckmarkIcon from './CheckmarkIcon';
 import style from './style.scss';
 
 const Filter = challengeUtils.filter;
+
+function placeArrow(TooltipNode) {
+  const rootLeftPos = parseInt(TooltipNode.style.left, 10);
+  const arrow = TooltipNode.querySelector('.rc-tooltip-arrow');
+  const rootLeftOffset = this.getRootDomNode().getBoundingClientRect().left;
+  arrow.style.left = `${rootLeftOffset - rootLeftPos + 6}px`;
+}
 
 export default function FiltersPanel({
   communityFilters,
@@ -233,7 +241,31 @@ export default function FiltersPanel({
     }));
 
   // const mapOps = item => ({ label: item, value: item });
-  const mapTypes = item => ({ label: item.name, value: item.abbreviation });
+  const mapTypes = item => ({
+    label: item.name, value: item.abbreviation, description: item.description,
+  });
+  const sortMap = {
+    CH: 1,
+    F2F: 2,
+    TSK: 3,
+    SKL: 4,
+    MM: 5,
+    SRM: 6,
+    RDM: 7,
+    CMP: 8,
+  };
+  const customSort = (a, b) => {
+    const left = _.get(a, 'value');
+    const right = _.get(b, 'value');
+    if (sortMap[left] < sortMap[right]) {
+      return -1;
+    }
+    if (sortMap[left] > sortMap[right]) {
+      return 1;
+    }
+    return 0;
+  };
+
   const getCommunityOption = () => {
     if (filterState.events && filterState.events.length) {
       return `event_${filterState.events[0]}`;
@@ -298,10 +330,11 @@ export default function FiltersPanel({
           Des: true,
           DS: true,
           QA: true,
+          CMP: true,
         },
         search: '',
         tags: [],
-        types: ['CH', 'F2F', 'TSK'],
+        types: ['CH', 'F2F', 'TSK', 'MM', 'RDM', 'SKL', 'SRM'],
         groups: [],
         events: [],
         endDateStart: null,
@@ -318,6 +351,17 @@ export default function FiltersPanel({
     setRecommendedToggle(on);
   };
 
+  const categoryCMPTip = (
+    <div styleName="tctooltiptext">
+      <p styleName="header">
+        Competitive Programming
+      </p>
+      <p styleName="body CMP">
+        Raw talent and a creative aptitude are the tools needed to compete in coding
+      </p>
+    </div>
+  );
+
   const recommendedCheckboxTip = (
     <div styleName="tctooltiptext">
       <p>Show the best competitions for you.</p>
@@ -328,6 +372,17 @@ export default function FiltersPanel({
     <div styleName="tctooltiptext">
       <p>Earn TCO points by participating in these <br />
         competitions. <a href={config.URL.TCO_OPEN_URL} target="_blank" rel="noreferrer noopener">Learn more about TCO</a>
+      </p>
+    </div>
+  );
+
+  const typeTip = (type, title, description) => (
+    <div styleName="tctooltiptext">
+      <p styleName="header">
+        {title}
+      </p>
+      <p styleName={cn('body', type)}>
+        {description}
       </p>
     </div>
   );
@@ -390,7 +445,7 @@ export default function FiltersPanel({
         <div styleName="filter-row">
           <div styleName="filter track">
             <span styleName="label">
-              Challenge Category
+              Categories
             </span>
             <div styleName="switches">
               <span styleName="filter-switch-with-label" aria-label={`Design toggle button pressed ${isTrackOn('Des') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('Des')}>
@@ -417,9 +472,26 @@ export default function FiltersPanel({
               <span styleName="filter-switch-with-label" aria-label={`QA toggle button pressed ${isTrackOn('QA') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('QA')}>
                 <SwitchWithLabel
                   enabled={isTrackOn('QA')}
-                  labelAfter="QA"
+                  labelAfter="QA & Testing"
                   onSwitch={on => switchTrack('QA', on)}
                 />
+              </span>
+              <span styleName="filter-switch-with-label" aria-label={`QA toggle button pressed ${isTrackOn('CMP') ? 'On' : 'Off'}`} role="switch" aria-checked={isTrackOn('CMP')}>
+                <SwitchWithLabel
+                  enabled={isTrackOn('CMP')}
+                  labelAfter="Competitive Programming"
+                  onSwitch={on => switchTrack('CMP', on)}
+                />
+                <div styleName="category-cmp-tooltip">
+                  <Tooltip
+                    id="cmp-tip"
+                    content={categoryCMPTip}
+                    className={style['tooltip-overlay']}
+                    trigger={['hover', 'focus']}
+                  >
+                    <CircleIcon />
+                  </Tooltip>
+                </div>
               </span>
             </div>
           </div>
@@ -430,12 +502,13 @@ export default function FiltersPanel({
             <div styleName="filter-row">
               <div styleName="filter challenge-type">
                 <span styleName="label">
-                  Challenge Type
+                  Types
                 </span>
                 <div styleName="checkboxes">
                   {
                     validTypes
                       .map(mapTypes)
+                      .sort(customSort)
                       .map(option => (
                         <span styleName="checkbox" key={option.value}>
                           <SwitchWithLabel
@@ -453,6 +526,18 @@ export default function FiltersPanel({
                               setFilterState({ ..._.clone(filterState), types });
                             }}
                           />
+                          <div styleName="type-tooltip">
+                            <Tooltip
+                              id={`${option.value}-tip`}
+                              content={typeTip(option.value, option.label, option.description)}
+                              className={style['tooltip-overlay']}
+                              trigger={['hover', 'focus']}
+                              placeArrow={placeArrow}
+                              position="top"
+                            >
+                              <CircleIcon />
+                            </Tooltip>
+                          </div>
                         </span>
                       ))
                   }
@@ -719,11 +804,12 @@ export default function FiltersPanel({
                 Des: true,
                 DS: true,
                 QA: true,
+                CMP: true,
               },
               search: '',
               tco: false,
               tags: [],
-              types: ['CH', 'F2F', 'TSK'],
+              types: ['CH', 'F2F', 'TSK', 'MM', 'RDM', 'SKL', 'SRM'],
               groups: [],
               events: [],
               endDateStart: null,

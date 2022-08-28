@@ -247,10 +247,11 @@ hr.hr {
       .switches {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
+        justify-content: flex-start !important;
+        column-gap: 10px;
 
         .filter-switch-with-label {
-          width: 45%;
+          min-width: calc(50% - 10px);
           margin-bottom: 16px;
           display: flex;
           white-space: nowrap;
@@ -295,6 +296,17 @@ hr.hr {
                 height: 12px;
                 border-radius: 50%;
               }
+            }
+          }
+
+          .category-cmp-tooltip {
+            height: 100%;
+            padding-left: 5px;
+            position: relative;
+            top: -2px;
+
+            div {
+              width: unset;
             }
           }
         }
@@ -414,18 +426,16 @@ hr.hr {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        justify-content: space-between;
+        justify-content: flex-start !important;
+        column-gap: 10px;
 
         .checkbox {
           position: relative;
-          display: inline-block;
+          display: flex;
+          flex-direction: row;
           line-height: 30px;
           min-width: calc(50% - 10px);
-          margin-bottom: 8px;
-
-          @include xs-to-md {
-            min-width: 35% !important;
-          }
+          margin-bottom: 18px;
 
           &:not(:last-child) {
             padding-right: 10px;
@@ -491,6 +501,17 @@ hr.hr {
                 height: 12px;
                 border-radius: 50%;
               }
+            }
+          }
+
+          .type-tooltip {
+            height: 100%;
+            padding-left: 5px;
+            position: relative;
+            top: -2px;
+
+            div {
+              width: unset;
             }
           }
         }
@@ -632,6 +653,8 @@ hr.hr {
 
 .tctooltiptext {
   background: $tc-black;
+  min-width: 210px;
+  max-width: 300px;
   color: $tc-white;
   border-radius: 8px;
   padding: 10px;
@@ -639,19 +662,51 @@ hr.hr {
   a {
     font-weight: bold;
   }
-}
 
-.tctooltiptext::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  bottom: 4px;
-  margin-left: -5px;
-  border-width: 5px 5px 0;
-  left: 50%;
-  border-top-color: $tc-black;
-  z-index: 1000;
+  .header {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    margin-top: 5px;
+  }
+
+  .body {
+    font-weight: 400;
+    color: $tc-white;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 5px;
+
+    &.CH {
+      width: 255px;
+    }
+
+    &.F2F {
+      width: 275px;
+    }
+
+    &.TSK {
+      width: 270px;
+    }
+
+    &.MM {
+      width: 275px;
+    }
+
+    &.RDM {
+      width: 280px;
+    }
+
+    &.SKL {
+      width: 255px;
+    }
+
+    &.SRM {
+      width: 245px;
+    }
+
+    &.CMP {
+      width: 258px;
+    }
+  }
 }
