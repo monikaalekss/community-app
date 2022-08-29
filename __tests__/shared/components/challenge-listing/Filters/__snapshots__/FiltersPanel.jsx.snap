@@ -79,7 +79,7 @@ exports[`Matches shallow shapshot 2`] = `
         <span
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__label___3W9TU"
         >
-          Challenge Category
+          Categories
         </span>
         <div
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__switches___10Wrx"
@@ -141,12 +141,72 @@ exports[`Matches shallow shapshot 2`] = `
               composeAdhocTheme="deeply"
               composeContextTheme="softly"
               enabled={false}
-              labelAfter="QA"
+              labelAfter="QA & Testing"
               labelBefore=""
               mapThemrProps={[Function]}
               onSwitch={[Function]}
               themePriority="adhoc-context-default"
             />
+          </span>
+          <span
+            aria-label="QA toggle button pressed Off"
+            className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__filter-switch-with-label___l-b1a"
+            role="switch"
+          >
+            <ThemedSwitchWithLabel
+              composeAdhocTheme="deeply"
+              composeContextTheme="softly"
+              enabled={false}
+              labelAfter="Competitive Programming"
+              labelBefore=""
+              mapThemrProps={[Function]}
+              onSwitch={[Function]}
+              themePriority="adhoc-context-default"
+            />
+            <div
+              className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__category-cmp-tooltip___3uSvp"
+            >
+              <Tooltip
+                align={Object {}}
+                className=""
+                content={
+                  <div
+                    className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__tctooltiptext___2Lyji"
+                  >
+                    <p
+                      className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__header___dbqVu"
+                    >
+                      Competitive Programming
+                    </p>
+                    <p
+                      className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__body___AE8cK src-shared-components-challenge-listing-Filters-FiltersPanel-___style__CMP___1rPDr"
+                    >
+                      Raw talent and a creative aptitude are the tools needed to compete in coding
+                    </p>
+                  </div>
+                }
+                defaultVisible={false}
+                id="cmp-tip"
+                onTooltipHover={[Function]}
+                placeArrow={[Function]}
+                position="top"
+                suppressDiv={false}
+                trigger={
+                  Array [
+                    "hover",
+                    "focus",
+                  ]
+                }
+              >
+                <CircleIcon
+                  fill="none"
+                  height="14"
+                  viewBox="0 0 14 14"
+                  width="14"
+                  xmlns="http://www.w3.org/2000/svg"
+                />
+              </Tooltip>
+            </div>
           </span>
         </div>
       </div>
@@ -160,7 +220,7 @@ exports[`Matches shallow shapshot 2`] = `
         <span
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__label___3W9TU"
         >
-          Challenge Type
+          Types
         </span>
         <div
           className="src-shared-components-challenge-listing-Filters-FiltersPanel-___style__checkboxes___3ukXp"
