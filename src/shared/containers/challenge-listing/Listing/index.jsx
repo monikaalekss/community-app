@@ -695,7 +695,7 @@ ListingContainer.defaultProps = {
   selectedCommunityId: '',
   groupIds: [''],
   // hideTcLinksInSidebarFooter: false,
-  challengesUrl: '/challenges',
+  challengesUrl: '/competitions',
   communityId: null,
   communityName: null,
   listingOnly: false,
