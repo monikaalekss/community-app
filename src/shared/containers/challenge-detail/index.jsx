@@ -700,7 +700,7 @@ class ChallengeDetailPageContainer extends React.Component {
 }
 
 ChallengeDetailPageContainer.defaultProps = {
-  challengesUrl: '/challenges',
+  challengesUrl: '/competitions',
   challengeTypes: [],
   checkpointResults: null,
   checkpoints: {},

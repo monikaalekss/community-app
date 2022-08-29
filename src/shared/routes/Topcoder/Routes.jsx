@@ -53,14 +53,14 @@ export default function Topcoder() {
               <Route
                 component={TermsDetail}
                 exact
-                path="/challenges/terms/detail/:termId"
+                path="/(competitions|challenges)/terms/detail/:termId"
               />
               <Route
                 component={ChallengeDetails}
                 exact
-                path="/challenges/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})"
+                path="/(competitions|challenges)/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})"
               />
-              <Route component={ChallengeListing} exact path="/challenges" />
+              <Route component={ChallengeListing} exact path="/(competitions|challenges)" />
               <Route component={Notifications} exact path="/notifications" />
               <Redirect
                 exact
@@ -71,18 +71,18 @@ export default function Topcoder() {
               <Route
                 component={ReviewOpportunityDetails}
                 exact
-                path="/challenges/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/review-opportunities"
+                path="/(competitions|challenges)/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/review-opportunities"
               />
               <Route component={Scoreboard} exact path="/scoreboard/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})" />
               <Route
                 component={SubmissionManagement}
                 exact
-                path="/challenges/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/my-submissions"
+                path="/(competitions|challenges)/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/my-submissions"
               />
               <Route
                 component={Submission}
                 exact
-                path="/challenges/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/submit"
+                path="/(competitions|challenges)/:challengeId([\w]{8}-[\w]{4}-[\w]{4}-[\w]{4}-[\w]{12}|\d{5,8})/submit"
               />
               <Route
                 component={Profile}
