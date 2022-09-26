@@ -70,7 +70,7 @@ class SubmissionManagementPageContainer extends React.Component {
         setTimeout(() => {
           loadMySubmissions(authTokens, challengeId);
           this.setState({ needReload: false });
-        }, 6000);
+        }, 2000);
       }
     }
   }
