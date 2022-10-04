@@ -30,6 +30,7 @@ export default function Submission(props) {
     submissionObject,
     showScreeningDetails,
     track,
+    type,
     onDownload,
     onDelete,
     onShowDetails,
@@ -90,6 +91,8 @@ export default function Submission(props) {
            */ }
           {status !== CHALLENGE_STATUS.COMPLETED
              && track === COMPETITION_TRACKS.DES
+             && type !== 'First2Finish'
+             && type !== 'Marathon Match'
              && safeForDownloadCheck === true && (
              <button
                styleName="delete-icon"
@@ -136,6 +139,7 @@ Submission.propTypes = {
   }),
   showScreeningDetails: PT.bool,
   track: PT.string.isRequired,
+  type: PT.string.isRequired,
   onDownload: PT.func.isRequired,
   onDelete: PT.func.isRequired,
   onShowDetails: PT.func,

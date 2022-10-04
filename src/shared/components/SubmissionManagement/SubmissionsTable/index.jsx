@@ -29,6 +29,7 @@ export default function SubmissionsTable(props) {
     submissionObjects,
     showDetails,
     track,
+    type,
     onDelete,
     onlineReviewUrl,
     helpPageUrl,
@@ -59,6 +60,7 @@ export default function SubmissionsTable(props) {
           submissionObject={subObject}
           showScreeningDetails={showDetails[subObject.id]}
           track={track}
+          type={type}
           onShowDetails={onShowDetails}
           onDelete={onDelete}
           onDownload={onDownload}
@@ -143,6 +145,7 @@ SubmissionsTable.propTypes = {
   submissionObjects: PT.arrayOf(SubShape),
   showDetails: PT.shape().isRequired,
   track: PT.string.isRequired,
+  type: PT.string.isRequired,
   onDelete: PT.func,
   onlineReviewUrl: PT.string,
   helpPageUrl: PT.string,

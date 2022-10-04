@@ -41,7 +41,7 @@ export default function SubmissionManagement(props) {
     submissionPhaseStartDate,
   } = props;
 
-  const { track } = challenge;
+  const { track, type } = challenge;
 
   const challengeType = track.toLowerCase();
 
@@ -174,6 +174,7 @@ export default function SubmissionManagement(props) {
              submissionObjects={submissions}
              showDetails={showDetails}
              track={track}
+             type={type}
              status={challenge.status}
              submissionPhaseStartDate={submissionPhaseStartDate}
              {...componentConfig}
